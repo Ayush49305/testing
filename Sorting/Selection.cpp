@@ -1,4 +1,4 @@
-
+// It works by repeatedly selecting the smallest (or largest) element from the unsorted part of the list and placing it in its correct position in the sorted part.
 #include<iostream>
 using namespace std;
 
@@ -6,12 +6,12 @@ using namespace std;
 void selection_sort(int arr[], int n) {
   
   // Outer loop → runs n-1 times (each time places the next smallest element)
-  for(int i = 0; i < n - 1; i++) {
+  for(int i = 0; i < n - 2; i++) {
     
     int mini = i;  // Assume current index has the smallest value
 
     // Inner loop → find the index of the smallest element in the remaining array
-    for(int j = i + 1; j < n; j++) {
+    for(int j = i; j < n; j++) {
       if(arr[j] < arr[mini]) {
         mini = j;  // Update index of minimum element
       }

@@ -1,35 +1,39 @@
-#include <stdio.h>
+// Insertion Sort is a simple sorting technique where we pick one element at a time from the unsorted part of the list and insert it into its correct position in the sorted part.
+
+#include<iostream>
 using namespace std;
 
-int main() {
-    int arr[100], n, i, j, key;
+void insertion_sort(int arr[],int n){
 
-    
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    printf("Enter %d elements:\n", n);
-    for(i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    for(i = 1; i < n; i++) {
-        key = arr[i];       // Current element to insert
-        j = i - 1;
-
-        // Move elements greater than key to one position ahead
-        while(j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
+    for(int i=0;i<=n-1;i++){
+        int j=i;
+        while(j>0 && arr[j-1]>arr[j]){
+            int temp=arr[j-1];
+            arr[j-1]=arr[j];
+            arr[j]=temp;
             j--;
         }
-        arr[j + 1] = key;   // Insert key at correct position
     }
+}
 
-    // Print sorted array
-    printf("Sorted array in ascending order:\n");
-    for(i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
+int main() {
 
+    int n;
+  cout << "Enter number of elements: ";
+  cin >> n;  // Input number of elements
+
+  int arr[n];
+  cout << "Enter array elements: ";
+  for(int i = 0; i < n; i++)
+    cin >> arr[i];  // Input all elements
+
+  // Call the selection sort function
+  insertion_sort(arr, n);
+
+  // Display the sorted array
+  cout << "Sorted array: ";
+  for(int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
     return 0;
 }

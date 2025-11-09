@@ -1,37 +1,41 @@
-#include <stdio.h>
+// Bubble Sort is a simple sorting method where we repeatedly compare two neighboring elements and swap them if they are in the wrong order.
+// This process is repeated until the list becomes completely sorted. 
+#include<iostream>
 using namespace std;
 
+void bubble_sort(int arr[],int n){
+
+    for(int i=n-1;i>=0;i--){
+        for(int j=0;j<=i-1;j++){
+            if(arr[j]>arr[j+1]){
+        
+            int temp=arr[j+1];
+            arr[j+1]=arr[j];
+            arr[j]= temp;
+           }
+        } 
+    }
+}
+
 int main() {
-    int arr[100], n, i, j, temp;
+    int n;
+  cout << "Enter number of elements: ";
+  cin >> n;  // Input number of elements
 
-    // Take input for number of elements
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
+  int arr[n];
+  cout << "Enter array elements: ";
+  for(int i = 0; i < n; i++)
+    cin >> arr[i];  // Input all elements
 
-    // Take input for array elements
-    printf("Enter %d elements:\n", n);
-    for(i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
+  // Call the selection sort function
+  bubble_sort(arr, n);
 
-    // Bubble Sort logic
-    for(i = 0; i < n - 1; i++) {
-        for(j = 0; j < n - i - 1; j++) {
-            // Compare adjacent elements
-            if(arr[j] > arr[j + 1]) {
-                // Swap if in wrong order
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
+  // Display the sorted array
+  cout << "Sorted array: ";
+  for(int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
 
-    // Print sorted array
-    printf("Sorted array in ascending order:\n");
-    for(i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
 
     return 0;
 }
